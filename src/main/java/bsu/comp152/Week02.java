@@ -1,5 +1,7 @@
 package bsu.comp152;
 
+import java.util.Random;
+
 public class Week02 {
     public static void main(String[] args) {
         System.out.println("Computation with numbers:");
@@ -43,6 +45,7 @@ public class Week02 {
         // The character data type (char) stores each character numerically.
         System.out.println('3' + '5');
         System.out.println("The character 3 is: " + '3');
+        System.out.println('a' + 'b');
         // Java is a strongly typed language:
         // variables must be declared by type:
         int num1 = 25;
@@ -63,11 +66,76 @@ public class Week02 {
         a = 1234;
         b = 99;
         System.out.println(a*b);
+        // Short form inline initialization of a string.
         String name = "Laura";
-        System.out.println("The prof's name is " + name);
+        String lastName;
+        lastName = "Gross";
+        System.out.println("The prof's name is " + name +
+                " " + lastName);
+        // Long form inline initialization of a string.
+        String name2 = new String("Karen");
+        // The long form is standard inline
+        // initialization in Java syntax for
+        // a non-primitive data type (object), such as
+        // String.
+        System.out.println("Her sister's name is " + name2);
+        System.out.println((-1 < 1) || (0 >= 5));
+        Random rand = new Random();
+        // Print out one of 10 random integers
+        // from 0 and 9 inclusive.
+        /*
+         * On the Random object rand,
+         * call the nextInt method,
+         * passing in 10 as an argument.
+         */
+        // System.out.println(rand.nextInt(10));
+        // Call the static method dieRoll:
+        dieRoll();
+        /*
+         * Call the static method multiSidedRoll
+         * passing the argument (parameter value)
+         * 6 or 12 or ... other number of sides.
+         */
+        multiSidedRoll(6);
+        multiSidedRoll(12);
+    }
 
+    /**
+     * Static method dieRoll -
+     * Print the result of rolling a six-sided die.
+     * @param
+     */
+    public static void dieRoll() {
+        /*
+         * This static method is in the class Week02.
+         */
+        Random rand = new Random();
+        System.out.println("The die roll is a " +
+                rand.nextInt(1, 7));
+        System.out.println("Your roll is " +
+                (returnRoll(6) + returnRoll(6)));
+    }
 
+    /**
+     * multiSidedDieRoll -
+     * Print the result of rolling a die with sides
+     * faces.
+     * @param sides
+     */
+    public static void multiSidedRoll(int sides){
+        Random rand = new Random();
+        System.out.println("The die roll is a " +
+                rand.nextInt(1, sides+1));
+    }
 
-
+    /**
+     * Return the result of rolling a die with sides
+     * faces.
+     * @param sides
+     * @return
+     */
+    public static int returnRoll (int sides){
+        Random rand = new Random();
+        return rand.nextInt(1, sides+1);
     }
 }
